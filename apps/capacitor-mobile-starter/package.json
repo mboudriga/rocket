@@ -1,0 +1,47 @@
+{
+  "name": "@app/capacitor-mobile-starter",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3008 --host",
+    "build": "vite build",
+    "cap:sync": "npx cap sync",
+    "cap:ios": "npx cap open ios",
+    "cap:android": "npx cap open android",
+    "cap:run:ios": "npx cap run ios",
+    "cap:run:android": "npx cap run android",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "clean": "rm -rf dist ios android"
+  },
+  "dependencies": {
+    "@capacitor/app": "catalog:",
+    "@capacitor/camera": "catalog:",
+    "@capacitor/core": "catalog:",
+    "@capacitor/geolocation": "catalog:",
+    "@capacitor/haptics": "catalog:",
+    "@capacitor/preferences": "catalog:",
+    "@capacitor/splash-screen": "catalog:",
+    "@chakra-ui/react": "catalog:",
+    "@emotion/react": "catalog:",
+    "@rocket/ui": "workspace:*",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-icons": "catalog:",
+    "react-router-dom": "catalog:",
+    "zustand": "catalog:"
+  },
+  "devDependencies": {
+    "@capacitor/android": "catalog:",
+    "@capacitor/cli": "catalog:",
+    "@capacitor/ios": "catalog:",
+    "@engine/typescript-config": "workspace:*",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-tsconfig-paths": "catalog:"
+  }
+}

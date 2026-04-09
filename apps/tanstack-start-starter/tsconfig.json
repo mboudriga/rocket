@@ -1,0 +1,12 @@
+{
+  "extends": "@engine/typescript-config/vite-react.json",
+  "compilerOptions": {
+    "verbatimModuleSyntax": false,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@components/*": ["../../engine/rocket-ui/src/components/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", ".output", ".nitro"]
+}

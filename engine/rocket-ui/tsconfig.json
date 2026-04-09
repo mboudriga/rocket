@@ -1,0 +1,11 @@
+{
+  "extends": "@engine/typescript-config/library.json",
+  "compilerOptions": {
+    "types": ["vitest/globals"],
+    "paths": {
+      "@components/*": ["./src/components/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", ".storybook", "**/*.story.tsx", "**/*.stories.tsx"]
+}

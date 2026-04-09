@@ -1,0 +1,10 @@
+{
+  "extends": "@engine/typescript-config/vite-react.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "ios", "android"]
+}

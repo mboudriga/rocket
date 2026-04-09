@@ -1,0 +1,97 @@
+{
+  "$schema": "https://turborepo.dev/schema.json",
+  "futureFlags": {
+    "globalConfiguration": true,
+    "affectedUsingTaskInputs": true,
+    "watchUsingTaskInputs": true
+  },
+  "global": {
+    "ui": "tui",
+    "inputs": ["biome.json", "tsconfig.json", ".env", ".env.local"],
+    "env": ["NODE_ENV", "CI"],
+    "passThroughEnv": ["GITHUB_TOKEN", "TURBO_TOKEN", "TURBO_TEAM"]
+  },
+  "tasks": {
+    "build": {
+      "description": "Compile all packages for production",
+      "dependsOn": ["typegen", "^build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.test.*", "!**/*.spec.*"],
+      "outputs": ["dist/**", "build/**", ".output/**", ".nitro/**", ".next/**", ".vercel/**"],
+      "env": ["CI", "NODE_ENV", "VITE_*", "NEXT_PUBLIC_*"]
+    },
+    "dev": {
+      "description": "Start development servers",
+      "dependsOn": ["typegen", "^build"],
+      "cache": false,
+      "persistent": true,
+      "interactive": true
+    },
+    "lint": {
+      "description": "Run Biome linter checks",
+      "inputs": ["$TURBO_DEFAULT$", "biome.json", "$TURBO_ROOT$/biome.json"],
+      "outputs": [],
+      "cache": true
+    },
+    "lint:fix": {
+      "description": "Run Biome linter with auto-fix",
+      "outputs": [],
+      "cache": false
+    },
+    "typegen": {
+      "description": "Generate type definitions",
+      "cache": false,
+      "outputs": ["src/routeTree.gen.ts", ".react-router/**"]
+    },
+    "typecheck": {
+      "description": "Run TypeScript type checking",
+      "dependsOn": ["typegen", "^build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "tsconfig.json",
+        "tsconfig.*.json",
+        "$TURBO_ROOT$/tsconfig.json"
+      ],
+      "outputs": [],
+      "cache": true
+    },
+    "test": {
+      "description": "Run Vitest unit tests",
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}", "vitest.config.*"],
+      "outputs": ["coverage/**"],
+      "cache": true,
+      "env": ["CI", "VITEST_*"]
+    },
+    "test:watch": {
+      "description": "Run Vitest in watch mode",
+      "cache": false,
+      "persistent": true
+    },
+    "test:e2e": {
+      "description": "Run Playwright end-to-end tests",
+      "dependsOn": ["build"],
+      "cache": false,
+      "env": ["CI", "PLAYWRIGHT_*"]
+    },
+    "e2e": {
+      "description": "Run Playwright E2E tests with reports",
+      "dependsOn": ["^build"],
+      "cache": false,
+      "outputs": ["playwright-report/**", "test-results/**"],
+      "passThroughEnv": ["CI", "PLAYWRIGHT_*", "TEST_USER_EMAIL", "TEST_USER_PASSWORD"]
+    },
+    "tauri:dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "tauri:build": {
+      "dependsOn": ["build"],
+      "cache": false,
+      "outputs": ["src-tauri/target/**"]
+    },
+    "clean": {
+      "description": "Remove build artifacts and caches",
+      "cache": false
+    }
+  }
+}

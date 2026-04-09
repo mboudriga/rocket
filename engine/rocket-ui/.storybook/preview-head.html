@@ -1,0 +1,196 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  /* Docs wrapper font */
+  .sbdocs.sbdocs-wrapper { font-family: "Inter", system-ui, sans-serif; }
+
+  /* Docs headings — Space Grotesk */
+  .sbdocs .sbdocs-h1,
+  .sbdocs .sbdocs-h2,
+  .sbdocs .sbdocs-h3 {
+    font-family: "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 600 !important;
+  }
+  .sbdocs .sbdocs-h1 { font-size: 2rem !important; margin-bottom: 0.5em !important; }
+  .sbdocs.sbdocs-content { max-width: 1000px; }
+
+  /* Code blocks — JetBrains Mono */
+  .sbdocs code, .sbdocs pre {
+    font-family: "JetBrains Mono", monospace !important;
+  }
+  .sbdocs pre {
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Docs links — light mode */
+  .sbdocs a:not(.sbdocs-a--current) {
+    color: #d03042 !important;
+    text-decoration-color: rgba(208, 48, 66, 0.3) !important;
+    text-underline-offset: 2px;
+    transition: text-decoration-color 0.15s ease;
+  }
+  .sbdocs a:not(.sbdocs-a--current):hover {
+    text-decoration-color: #d03042 !important;
+  }
+
+  /* Docs links — dark mode */
+  html.dark .sbdocs a:not(.sbdocs-a--current) {
+    color: #ed4757 !important;
+    text-decoration-color: rgba(237, 71, 87, 0.3) !important;
+  }
+  html.dark .sbdocs a:not(.sbdocs-a--current):hover {
+    text-decoration-color: #ed4757 !important;
+  }
+
+  /* ── Shiki dual-theme toggling ── */
+  .shiki,
+  .shiki span {
+    color: var(--shiki-light) !important;
+    background-color: var(--shiki-light-bg) !important;
+  }
+  html.dark .shiki,
+  html.dark .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
+
+  /* ── Shiki base styles ── */
+  .shiki {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    border-radius: 8px;
+    padding: 16px;
+    overflow-x: auto;
+  }
+  .shiki code {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    background: transparent !important;
+    padding: 0;
+  }
+
+  /* ── Transformer: Diff ── */
+  .shiki .line.diff.add {
+    background-color: rgba(45, 122, 82, 0.2);
+  }
+  .shiki .line.diff.add::before {
+    content: "+";
+    color: #2d7a52;
+    position: absolute;
+    left: 4px;
+  }
+  .shiki .line.diff.remove {
+    background-color: rgba(208, 48, 66, 0.2);
+  }
+  .shiki .line.diff.remove::before {
+    content: "-";
+    color: #d03042;
+    position: absolute;
+    left: 4px;
+  }
+  html.dark .shiki .line.diff.add {
+    background-color: rgba(126, 200, 159, 0.15);
+  }
+  html.dark .shiki .line.diff.add::before {
+    color: #7ec89f;
+  }
+  html.dark .shiki .line.diff.remove {
+    background-color: rgba(237, 71, 87, 0.15);
+  }
+  html.dark .shiki .line.diff.remove::before {
+    color: #ed4757;
+  }
+
+  /* ── Transformer: Highlight ── */
+  .shiki .line.highlighted {
+    background-color: rgba(211, 175, 55, 0.15);
+    border-left: 3px solid #D3AF37;
+    padding-left: 13px;
+  }
+
+  /* ── Transformer: Focus ── */
+  .shiki.has-focused .line:not(.focused) {
+    filter: blur(1px);
+    opacity: 0.5;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+  }
+  .shiki.has-focused:hover .line:not(.focused) {
+    filter: none;
+    opacity: 1;
+  }
+
+  /* ── Line numbers ── */
+  .shiki .line::before {
+    --shiki-line-number-color: #756f6a;
+  }
+  html.dark .shiki .line::before {
+    --shiki-line-number-color: #5c5955;
+  }
+
+  /* ── Search Dialog overrides ── */
+
+  /* Collapse the empty header the Dialog always renders */
+  [data-scope="dialog"][data-part="header"]:not(:has([data-part="title"])) {
+    display: none;
+  }
+
+  /* Hide Dialog's built-in close button (search has its own Escape) */
+  [data-scope="dialog"] [data-part="close-trigger"] {
+    display: none;
+  }
+
+  /* Remove default body padding — search dialog manages its own */
+  [data-scope="dialog"] [data-part="body"] {
+    padding: 0 !important;
+  }
+
+  /* Dialog content: 12px radius, layered brand-tinted shadows */
+  [data-scope="dialog"] [data-part="content"]:not(.chakra-drawer__content) {
+    border-radius: 12px !important;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(28, 27, 26, 0.05),
+      0 1px 2px rgba(28, 27, 26, 0.06),
+      0 4px 12px rgba(28, 27, 26, 0.06),
+      0 16px 32px -4px rgba(28, 27, 26, 0.1) !important;
+  }
+
+  /* Dark mode: luminous border replaces shadows */
+  html.dark [data-scope="dialog"] [data-part="content"]:not(.chakra-drawer__content) {
+    box-shadow: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Brand-tinted backdrop */
+  [data-scope="dialog"] [data-part="backdrop"] {
+    background: rgba(28, 27, 26, 0.5) !important;
+    backdrop-filter: blur(4px);
+  }
+  html.dark [data-scope="dialog"] [data-part="backdrop"] {
+    background: rgba(0, 0, 0, 0.65) !important;
+  }
+
+  /* Scrollbar in results area */
+  [data-search-results]::-webkit-scrollbar { width: 6px; }
+  [data-search-results]::-webkit-scrollbar-track { background: transparent; }
+  [data-search-results]::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.25);
+    border-radius: 3px;
+  }
+
+  /* Reduced motion: skip scale/translate, opacity-only */
+  @media (prefers-reduced-motion: reduce) {
+    [data-scope="dialog"] [data-part="content"]:not(.chakra-drawer__content) {
+      animation-duration: 0ms !important;
+      transition-duration: 150ms !important;
+    }
+  }
+</style>

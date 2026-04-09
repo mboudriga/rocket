@@ -1,0 +1,55 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+  rel="stylesheet"
+/>
+<!-- Where there's a will there's a way...
+  TODO: Re-color selected radios in the 'Props' panel -> accent-color: #c52639;
+-->
+<style>
+  .sidebar-header { padding: 16px 16px 12px !important; }
+  .sidebar-header a[href] {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+  }
+  .sidebar-header img {
+    height: 36px !important;
+    width: auto !important;
+  }
+  .sidebar-header a[href]::after {
+    content: "rocket-ui" !important;
+    font-family: "Space Grotesk", system-ui, sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: inherit !important;
+  }
+
+  /* Sidebar folder icons → Rocket red (overrides SB10 hardcoded ultraviolet/primary) */
+  #storybook-explorer-tree [data-nodetype="group"] svg {
+    color: #d03042 !important;
+  }
+  /* Sidebar story/bookmark icons → warm gold (overrides SB10 hardcoded seafoam) */
+  #storybook-explorer-tree [data-nodetype="story"] svg {
+    color: #D3AF37 !important;
+  }
+  /* Keep selected-item icons white for contrast on the red highlight */
+  #storybook-explorer-tree [data-selected="true"] svg {
+    color: #fff !important;
+  }
+
+  [role="search"] input {
+    font-family: "Inter", system-ui, sans-serif !important;
+    font-size: 13px !important;
+  }
+
+  /* Scrollbars — semi-transparent for both light and dark */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(128, 128, 128, 0.3); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(128, 128, 128, 0.5); }
+
+  /* Toolbar button transitions */
+  [role="toolbar"] button { transition: color 0.15s ease, background 0.15s ease; }
+</style>

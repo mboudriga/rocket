@@ -1,0 +1,12 @@
+{
+  "name": "@engine/typescript-config",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./base.json": "./base.json",
+    "./vite-react.json": "./vite-react.json",
+    "./library.json": "./library.json",
+    "./nextjs": "./nextjs.json",
+    "./nextjs.json": "./nextjs.json"
+  }
+}

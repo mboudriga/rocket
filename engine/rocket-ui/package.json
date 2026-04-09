@@ -1,0 +1,95 @@
+{
+  "name": "@rocket/ui",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    },
+    "./toast": {
+      "types": "./src/toast/index.ts",
+      "import": "./src/toast/index.ts"
+    },
+    "./fonts/mbm-dashboard": {
+      "types": "./src/fonts/index.ts",
+      "import": "./src/fonts/index.ts"
+    }
+  },
+  "sideEffects": [
+    "./src/fonts/**/*"
+  ],
+  "scripts": {
+    "postinstall": "npx @chakra-ui/cli typegen ./src/theme/index.ts",
+    "typegen": "npx @chakra-ui/cli typegen ./src/theme/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "storybook": "storybook dev -p 6006",
+    "build:storybook": "storybook build"
+  },
+  "dependencies": {
+    "@ark-ui/react": "catalog:",
+    "@chakra-ui/react": "catalog:",
+    "@emotion/react": "catalog:",
+    "@fontsource-variable/geist-mono": "^5.0.0",
+    "@fontsource/inter": "^5.0.0",
+    "@fontsource/plus-jakarta-sans": "^5.0.0",
+    "@internationalized/date": "^3.10.1",
+    "@react-aria/calendar": "^3.9.3",
+    "@react-aria/i18n": "^3.12.14",
+    "@react-stately/calendar": "^3.9.1",
+    "@tiptap/extension-character-count": "^3.0.0",
+    "@tiptap/extension-highlight": "^3.0.0",
+    "@tiptap/extension-link": "^3.0.0",
+    "@tiptap/extension-placeholder": "^3.0.0",
+    "@tiptap/extension-underline": "^3.0.0",
+    "@tiptap/pm": "^3.0.0",
+    "@tiptap/react": "^3.0.0",
+    "@tiptap/starter-kit": "^3.0.0",
+    "dequal": "^2.0.3",
+    "react-icons": "catalog:"
+  },
+  "devDependencies": {
+    "@chakra-ui/cli": "^3.31.0",
+    "@engine/typescript-config": "workspace:*",
+    "@shikijs/transformers": "^3.7.0",
+    "@storybook/addon-a11y": "catalog:",
+    "@storybook/addon-docs": "catalog:",
+    "@storybook/addon-vitest": "catalog:",
+    "@storybook/react-vite": "catalog:",
+    "@testing-library/jest-dom": "catalog:",
+    "@testing-library/react": "catalog:",
+    "@testing-library/user-event": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "@vueless/storybook-dark-mode": "^10.0.7",
+    "fuse.js": "^7.0.0",
+    "jsdom": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-shiki": "^0.9.2",
+    "react-toastify": "catalog:",
+    "storybook": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:",
+    "vitest-axe": "^0.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0",
+    "react-toastify": "^10.0.0 || ^11.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-toastify": {
+      "optional": true
+    }
+  }
+}

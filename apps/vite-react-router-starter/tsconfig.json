@@ -1,0 +1,13 @@
+{
+  "extends": "@engine/typescript-config/vite-react.json",
+  "compilerOptions": {
+    "rootDirs": [".", "./.react-router/types"],
+    "allowArbitraryExtensions": true,
+    "paths": {
+      "@/*": ["./app/*"],
+      "@components/*": ["../../engine/rocket-ui/src/components/*"]
+    }
+  },
+  "include": [".react-router/types/**/*", "app", "app/env.d.ts"],
+  "exclude": ["node_modules", "build"]
+}

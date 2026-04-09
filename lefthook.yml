@@ -1,0 +1,26 @@
+min_version: 2.0.0
+
+output:
+  - summary
+  - failure
+
+pre-commit:
+  jobs:
+    - name: lint
+      run: pnpm exec biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+      glob: "*.{js,ts,cjs,mjs,jsx,tsx,json,jsonc}"
+      stage_fixed: true
+      interactive: true
+    - name: typecheck
+      run: pnpm turbo typecheck --no-daemon --ui=stream
+      glob: "*.{ts,tsx}"
+      interactive: true
+      env:
+        TURBO_UI: "false"
+        TURBO_DAEMON: "false"
+        TURBO_NO_UPDATE_NOTIFIER: "true"
+
+commit-msg:
+  jobs:
+    - name: commitlint
+      run: pnpm exec commitlint --edit {1}

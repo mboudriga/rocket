@@ -1,0 +1,12 @@
+{
+  "extends": "@engine/typescript-config/nextjs",
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@components/*": ["../../engine/rocket-ui/src/components/*"]
+    }
+  },
+  "include": ["src", "next-env.d.ts", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", ".next"]
+}

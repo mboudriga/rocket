@@ -1,0 +1,37 @@
+{
+  "name": "@app/vite-react-router-starter",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "react-router dev --port 3003",
+    "build": "react-router build",
+    "start": "react-router-serve ./build/server/index.js",
+    "typecheck": "react-router typegen && tsc",
+    "typegen": "react-router typegen",
+    "lint": "biome check .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "clean": "rm -rf .react-router build"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "catalog:",
+    "@emotion/react": "catalog:",
+    "@react-router/node": "catalog:",
+    "@react-router/serve": "catalog:",
+    "@rocket/ui": "workspace:*",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-icons": "catalog:",
+    "react-router": "catalog:",
+    "isbot": "^5"
+  },
+  "devDependencies": {
+    "@engine/typescript-config": "workspace:*",
+    "@react-router/dev": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:"
+  }
+}

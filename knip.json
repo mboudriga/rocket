@@ -1,0 +1,26 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "workspaces": {
+    ".": {
+      "entry": ["turbo.json", "biome.json"],
+      "project": ["*.config.{js,ts}", "*.json"]
+    },
+    "apps/vite-tanstack-router-starter": {
+      "entry": ["src/router.tsx", "src/routes/**/*.{ts,tsx}", "src/routeTree.gen.ts"],
+      "project": ["src/**/*.{ts,tsx}"]
+    },
+    "engine/rocket-ui": {
+      "project": ["src/**/*.{ts,tsx}", ".storybook/**/*.{ts,tsx}"]
+    },
+    "apps/resume-website": {
+      "entry": ["src/routes/**/*.{ts,tsx}", "src/routeTree.gen.ts"],
+      "project": ["src/**/*.{ts,tsx}"]
+    },
+    "engine/typescript-config": {
+      "entry": ["*.json"],
+      "project": ["*.json"]
+    }
+  },
+  "ignoreDependencies": ["@chakra-ui/react", "@emotion/react"],
+  "ignoreExportsUsedInFile": true
+}

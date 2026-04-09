@@ -1,0 +1,22 @@
+/* Plus Jakarta Sans - Headings */
+@import '@fontsource/plus-jakarta-sans/400.css';
+@import '@fontsource/plus-jakarta-sans/400-italic.css';
+@import '@fontsource/plus-jakarta-sans/500.css';
+@import '@fontsource/plus-jakarta-sans/500-italic.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/600-italic.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/plus-jakarta-sans/700-italic.css';
+
+/* Inter - Body text */
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/400-italic.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/500-italic.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/600-italic.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/inter/700-italic.css';
+
+/* Geist Mono - Code/monospace */
+@import '@fontsource-variable/geist-mono';

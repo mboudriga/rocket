@@ -1,0 +1,43 @@
+{
+  "name": "rocket",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.0.0",
+  "engines": {
+    "node": ">=24.11.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "lint:ci": "biome ci --reporter=github .",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "typecheck": "turbo typecheck --ui=stream",
+    "test": "turbo test",
+    "test:watch": "turbo test:watch",
+    "test:coverage": "pnpm --filter @rocket/ui test:coverage",
+    "test:e2e": "turbo test:e2e",
+    "knip": "knip",
+    "knip:fix": "knip --fix",
+    "sherif": "npx sherif@latest",
+    "sherif:fix": "npx sherif@latest --fix",
+    "validate": "pnpm lint && pnpm typecheck && pnpm knip && pnpm sherif",
+    "clean": "turbo clean && rm -rf node_modules/.cache",
+    "prepare": "lefthook install"
+  },
+  "devDependencies": {
+    "@babel/parser": "^7.29.2",
+    "@babel/traverse": "^7.29.0",
+    "@babel/types": "^7.29.0",
+    "@biomejs/biome": "^2.4.10",
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "knip": "^6.3.0",
+    "lefthook": "^2.1.5",
+    "turbo": "^2.9.0",
+    "typescript": "catalog:"
+  }
+}

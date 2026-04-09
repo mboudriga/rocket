@@ -1,0 +1,65 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+.output/
+.next/
+*.tsbuildinfo
+
+# Generated route trees (TanStack Router)
+**/routeTree.gen.ts
+
+# React Router generated types
+.react-router/
+
+# WXT generated types
+.wxt/
+
+# Turbo
+.turbo/
+
+# Testing
+coverage/
+
+# Playwright
+**/playwright-report/
+**/test-results/
+**/blob-report/
+**/e2e/.auth/
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# IDE
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Claude
+settings.local.json
+.claude/skills/*-local/
+.claude/agents/*-local/
+
+# Storybook
+storybook-static/
+
+# Tauri / Rust
+**/src-tauri/target/
+**/src-tauri/gen/
+
+# Misc
+*.local
+.cache/
+nul
